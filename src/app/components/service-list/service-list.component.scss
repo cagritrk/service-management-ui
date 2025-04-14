@@ -17,6 +17,10 @@ li {
   align-items: center;
 }
 
+a.create-button {
+  margin-top: var(--spacing-unit);
+}
+
 .error-message {
   color: var(--danger-color);
   background-color: var(--danger-bg-light);
@@ -24,12 +28,4 @@ li {
   padding: var(--spacing-unit);
   margin-bottom: var(--spacing-unit);
   border-radius: var(--border-radius);
-}
-
-.create-button {
-  margin-top: var(--spacing-unit);
-}
-
-a.create-button {
-  margin-top: var(--spacing-unit);
 }

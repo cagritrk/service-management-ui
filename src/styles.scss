@@ -109,9 +109,20 @@ a.add-button:hover:not(:disabled) {
   border-color: var(--success-color-dark);
 }
 
+button.delete-button, a.delete-button {
+  border-color: var(--danger-color);
+  color: var(--text-color-headings);
+  margin-left: var(--spacing-unit);
+}
+
+button.delete-button:hover:not(:disabled),
+a.delete-button:hover:not(:disabled) {
+  background-color: var(--danger-color-dark);
+  border-color: var(--danger-color-dark);
+}
+
 button.remove-button,
 a.remove-button {
-    background-color: var(--warning-color);
     border-color: var(--warning-color);
     color: var(--text-color-headings);
     margin-left: var(--spacing-unit);
