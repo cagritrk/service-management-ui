@@ -1,0 +1,26 @@
+<h2>Services</h2>
+
+@if (error()) {
+  <div class="error-message">
+    {{ error() }}
+  </div>
+}
+
+@if (services().length >= 0) {
+  <ul>
+    @for (service of services(); track service.id) {
+      <li>
+        <a [routerLink]="['/services', service.id]">
+          Service ID: {{ service.id }} (Resources: {{ service.resourceCount }})
+        </a>
+        <button (click)="deleteService(service.id, $event)" class="delete-button">Delete</button>
+      </li>
+    } @empty {
+      <p>No services found.</p>
+    }
+  </ul>
+} @else if (!error()) {
+  <p>Loading services...</p>
+}
+
+<a [routerLink]="['/services/new']" class="create-button">Create New Service</a>
