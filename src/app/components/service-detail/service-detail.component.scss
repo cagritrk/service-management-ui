@@ -1,0 +1,100 @@
+form {
+  margin-top: var(--spacing-unit);
+
+  .resource-group {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: calc(var(--spacing-unit) * 1.25);
+    margin-bottom: calc(var(--spacing-unit) * 1.25);
+    background-color: var(--card-bg-color);
+    box-shadow: var(--box-shadow-sm);
+  
+    h4 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: calc(var(--spacing-unit) * 0.75);
+      margin-bottom: var(--spacing-unit);
+      color: var(--text-color-headings);
+    }
+  }
+
+  .owner-group {
+    background-color: var(--nested-card-bg-color);
+    margin-left: 0;
+    margin-top: var(--spacing-unit);
+    padding: var(--spacing-unit);
+  
+    h6 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: calc(var(--spacing-unit) * 0.5);
+      margin-bottom: var(--spacing-unit);
+      color: var(--text-color-headings);
+    }
+  }
+
+  .action-buttons {
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    padding-top: var(--spacing-unit);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: var(--spacing-unit);
+  }
+
+  .form-field {
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+
+    label {
+      display: block;
+      margin-bottom: calc(var(--spacing-unit) * 0.35);
+      font-weight: 500;
+      color: var(--text-color);
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    textarea,
+    select {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--input-text-color);
+      background-color: var(--input-bg-color);
+      background-clip: padding-box;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      box-sizing: border-box;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      color: var(--input-text-color);
+      background-color: var(--input-bg-color);
+      border-color: var(--primary-color-light);
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--secondary-color);
+      opacity: 0.7;
+    }
+
+    small.validation-error {
+      color: var(--danger-color);
+      font-size: 0.875em;
+      margin-top: 0.35rem;
+      display: block;
+    }
+  }
+}

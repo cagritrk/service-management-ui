@@ -1,0 +1,76 @@
+@if (isLoading()) {
+  <p>Loading service details...</p>
+} @else {
+  <h2>{{ isNew() ? 'Create New Service' : 'Edit Service: ' + (serviceId() || '') }}</h2>
+
+  @if (error()) {
+    <div class="error-message">
+      {{ error() }}
+    </div>
+  }
+
+  @if (serviceForm) {
+    <form [formGroup]="serviceForm" (ngSubmit)="saveService()">
+
+      <div formArrayName="resources">
+        <h3>Resources</h3>
+        @for (resourceGroup of resources.controls; track $index; let i = $index) {
+          <div [formGroupName]="i" class="resource-group">
+            <h4>Resource {{ i + 1 }}
+              <button type="button" (click)="removeResource(i)" class="remove-button small">Remove Resource</button>
+            </h4>
+
+            <div formArrayName="owners">
+              <h5>Owners</h5>
+              @for (ownerGroup of owners(i).controls; track $index; let j = $index) {
+                <div [formGroupName]="j" class="owner-group">
+                  <h6>Owner {{ j + 1 }}
+                     <button type="button" (click)="removeOwner(i, j)" class="remove-button small">Remove Owner</button>
+                  </h6>
+                  <div class="form-field">
+                    <label [for]="'owner-name-' + i + '-' + j">Name:</label>
+                    <input [id]="'owner-name-' + i + '-' + j" type="text" formControlName="name" required>
+                    @if (owners(i).controls[j].get('name')?.invalid && owners(i).controls[j].get('name')?.touched) {
+                      <small class="validation-error">Name is required.</small>
+                    }
+                  </div>
+                  <div class="form-field">
+                    <label [for]="'owner-account-' + i + '-' + j">Account Number:</label>
+                    <input [id]="'owner-account-' + i + '-' + j" type="text" formControlName="accountNumber" required>
+                     @if (owners(i).controls[j].get('accountNumber')?.invalid && owners(i).controls[j].get('accountNumber')?.touched) {
+                      <small class="validation-error">Account Number is required.</small>
+                    }
+                  </div>
+                  <div class="form-field">
+                    <label [for]="'owner-level-' + i + '-' + j">Level:</label>
+                    <input [id]="'owner-level-' + i + '-' + j" type="number" formControlName="level" required min="0">
+                     @if (owners(i).controls[j].get('level')?.invalid && owners(i).controls[j].get('level')?.touched) {
+                      <small class="validation-error">Level is required and must be 0 or greater.</small>
+                    }
+                  </div>
+                </div>
+              } @empty {
+                <p>No owners for this resource yet.</p>
+              }
+              <button type="button" (click)="addOwner(i)" class="add-button">Add Owner</button>
+            </div>
+
+          </div>
+        } @empty {
+          <p>No resources added to this service yet.</p>
+        }
+        <button type="button" (click)="addResource()" class="add-button">Add Resource</button>
+      </div>
+
+      <div class="action-buttons">
+        <button type="submit" [disabled]="serviceForm.invalid || isLoading()">
+          {{ isNew() ? 'Create Service' : 'Update Service' }}
+        </button>
+        <button type="button" (click)="cancel()" [disabled]="isLoading()">Cancel</button>
+      </div>
+
+    </form>
+  } @else if (!isLoading() && !error()) {
+      <p>Initializing form...</p>
+  }
+}
