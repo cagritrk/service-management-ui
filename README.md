@@ -18,7 +18,11 @@ Two profiles are available:
 - development (environment.development.ts)
 - production (environment.ts)
 
+## Features Demonstration
+### 1. Create Service
 ![service-manager-app-demo](https://github.com/user-attachments/assets/ce5070bd-4cf4-4f38-9ec6-7a32f07d5ae4)
+### 2. Update Service
+![service-manager-app-demo-update](https://github.com/user-attachments/assets/1f55842b-db88-4d78-8568-1a0a2a40aa1c)
 
 ## Requirements
 
