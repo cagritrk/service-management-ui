@@ -18,6 +18,8 @@ Two profiles are available:
 - development (environment.development.ts)
 - production (environment.ts)
 
+![service-manager-app-demo](https://github.com/user-attachments/assets/ce5070bd-4cf4-4f38-9ec6-7a32f07d5ae4)
+
 ## Requirements
 
 - Node.js (v^18.19.1 or newer)
